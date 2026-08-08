@@ -4,18 +4,21 @@ Node.jsからティラノスクリプトを直接起動（プレビュー表示�
 ## 1. ディレクトリの準備
 まず、作業用のフォルダを作成し、その中にティラノスクリプトの本体（index.html や tyrano フォルダなどが入った一式）を配置します。
 
+```
 my-tyrano-project/
 ├── index.html          <-- ティラノのメインファイル
 ├── tyrano/             <-- ティラノのシステムフォルダ
 ├── data/               <-- シナリオや画像が入ったフォルダ
 ├── main.js             <-- 【新規作成】Electronの起動スクリプト
 └── package.json        <-- 【新規作成】Node.jsの設定ファイル
+```
 
 ## 2. 設定ファイルの作成
 作成したフォルダの直下に、以下の2つのファイルを新規作成します。
 ## ① package.json
 プロジェクトの設定と、起動コマンドを定義します。
 
+```
 {
   "name": "tyrano-electron-runner",
   "version": "1.0.0",
@@ -24,10 +27,12 @@ my-tyrano-project/
     "start": "electron ."
   }
 }
+```
 
 ## ② main.js
 Node.js環境でElectronを立ち上げ、ティラノスクリプトの index.html を読み込むためのスクリプトです。
 
+```
 const { app, BrowserWindow } = require('electron');const path = require('path');
 function createWindow() {
   const win = new BrowserWindow({
@@ -51,14 +56,17 @@ app.whenReady().then(createWindow);
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') app.quit();
 });
+```
 
 ## 3. Electronのインストールと起動
 LinuxMintの端末（ターミナル）を開き、作成したプロジェクトフォルダ（my-tyrano-project）に移動して以下のコマンドを実行します。
 
 # 1. フォルダに移動
 cd /path/to/my-tyrano-project
+
 # 2. 開発用としてElectronをローカルインストール
 npm install electron --save-dev
+
 # 3. 起動
 npm start
 
