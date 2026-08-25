@@ -58,6 +58,10 @@
     [glink text="%text" y="%y" x="200" width=500 target="*%text" color="blue" size="20"]
 [endmacro]
 
+[macro name="dekamoji"]
+  [font size=40]
+[endmacro]
+
 ;タイトル画面へ移動
 @jump storage="title.ks"
 
