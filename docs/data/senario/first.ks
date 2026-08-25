@@ -53,6 +53,10 @@
 [hidemenubutton]
 
 ;Macro定義
+; glinkを簡略化するマクロ「my_glink」の定義
+[macro name="mcr_choice"]
+    [glink text="%text" y="%y" x="200" width=500 target="*%text" color="blue" size="20"]
+[endmacro]
 
 ;タイトル画面へ移動
 @jump storage="title.ks"
