@@ -20,11 +20,9 @@
 @current layer="message1"
 @delay speed=120
 @playse buf="1" storage="type1.mp3" loop="true"
-@start_keyconfig
 ８月１日 午後３：００[r]
-Ａ町解体前の雑居ビル
+Ａ町商店街・解体前の雑居ビル
 @stopse buf="1"
-@playse buf="1" storage="none"
 @wait time=1500
 @layopt layer="message1" visible=false
 @er layer="message1"
@@ -51,6 +49,8 @@
 ;金庫前の背景が現れる
 @bg storage="kinko_before.jpg" time="3000"  method="fadeInDown"
 @chara_show name="aoi"
+
+@jump target="*scene12"
 
 #あおい:default
 あれ？[p]
@@ -100,16 +100,35 @@
 #あおい:pikon
 …そうだ、ゆうゆう呼ぼっと[p]
 
-;電話
-#
-トゥルルルルルル
+*scene12
 
+;あおいを横にずらし、電話表示
+@chara_move name="aoi" left="+=200"
+@dispasset storage="smartphone_before.jpg" name="phone"
+@playse buf="1" storage="callphone.mp3" loop="true"
+#
+トゥルルルルルル…
+@anim name="phone" top="+=100" time="1200" effect="easeInOutBounce"
+@wa
+@anim name="phone" top="-=100" time="200"
+@wa
+@anim name="phone" top="+=100" time="1200" effect="easeInOutBounce"
+@wa
+@anim name="phone" top="-=100" time="200"
+@wa
+@stopse buf="1"
+
+@playse buf="1" storage="getphone.mp3"
+@dispasset storage="smartphone.jpg" name="phone"
+[cm]
 #ゆうゆう
-なんだ、橘
+なんだ、橘[p]
 
 #あおい:smile2
-あのさ、ゆうゆう…
+あのさ、ゆうゆう…[p]
+@chara_hide name="aoi"
 
+@bg storage="black.jpg" time="500"
 ;ここで、タイトル表示
 ;揺れる
 
@@ -121,8 +140,14 @@
 @freeimage layer="1" time=1000
 @layopt layer="1" visible=false
 
+#あおい
+だって結城祐一（ゆうきゆういち）[r]
+ゆうゆうじゃん[p]
+
 #祐一
-それだったら名前で呼べ[r]ゆうゆうとか俺はパンダじゃないんだぞ[p]
+それだったら名前で呼べ[r]
+ゆうゆうとか、俺はパンダじゃないんだぞ[p]
+
 #あおい:default
 わかったよ、ゆうゆう[p]
 
@@ -133,17 +158,20 @@
 まだ何も言ってないよ[p]
 
 #祐一
-橘が言う事はいつもそうだろ。[r]小学校の時からな！[p]
+橘が言う事はいつもそうだろ[r]
+小学校の時からな！[p]
 
 #あおい:serious
-商店街に解体前のビルがあるでしょ？　ちょっと来て欲しいのよ[p]
+商店街に解体前のビルがあるでしょ？[r]
+ちょっと来て欲しいのよ[p]
 
 #祐一
 だから、めんどくせえって言ってんだ[p]
 
 #あおい
-困ってるおばあさんがいるの[r]開かない金庫があって、どうしても中のものを取り出したいんだって[p]
-助けてあげられるんじゃない？
+困ってるおばあさんがいるの[r]
+開かない金庫があって、どうしても中のものを取り出したいんだって[p]
+助けてあげてよ[p]
 
 #祐一
 ほう？[r]
@@ -153,9 +181,10 @@
 もうすぐ解体されちゃうから、急いで！[p]
 
 #祐一
-しょうがねえなあ[r]
+しょうがねえなあ…[r]
 (お前たち(工具)、出番だぞ…！)[p]
+@wait time=500
 
-@jump storage="scene2.ks"
+@jump storage="scene1.ks"
 
 [s] ; ゲームを停止

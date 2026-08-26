@@ -17,7 +17,11 @@
 
 *gamestart
 ;一番最初のシナリオファイルへジャンプする
-@jump storage="scene0.ks"
+[cm]
+[clearfix]
+[start_keyconfig]
 
+@jump storage="scene0.ks"
+;@jump storage="scene1.ks"
 
 
